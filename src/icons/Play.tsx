@@ -8,7 +8,7 @@ const Movie: React.FC<{ className?: string }> = ({ className }) => {
       xmlns="http://www.w3.org/2000/svg"
       className={cn("text-inherit", className)}
     >
-      <g stroke-width="0" />
+      <g strokeWidth="0" />
       <g strokeLinecap="round" strokeLinejoin="round" />
       <g>
         <path
