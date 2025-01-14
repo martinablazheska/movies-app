@@ -6,6 +6,7 @@ type MoviesContextType = {
   isLoading: boolean;
   error: string | null;
   currentPage: number;
+  totalItems: number;
   totalPages: number;
   setPage: (page: number) => void;
   hasNextPage: boolean;
@@ -68,6 +69,7 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
         isLoading,
         error,
         currentPage,
+        totalItems,
         totalPages,
         setPage,
         hasNextPage,
