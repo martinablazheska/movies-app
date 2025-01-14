@@ -32,26 +32,37 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const fetchMovies = async () => {
       setIsLoading(true);
+      setError(null);
       try {
         const skip = (currentPage - 1) * LIMIT;
         const response = await fetch(
           `https://november7-730026606190.europe-west1.run.app/movies/?skip=${skip}&limit=${LIMIT}`
         );
 
+        if (response.status === 422) {
+          const validationError = await response.json();
+          throw new Error(
+            `Validation error: ${validationError.detail[0]?.msg}`
+          );
+        }
+
         if (!response.ok) {
-          throw new Error("Failed to fetch movies");
+          throw new Error(`HTTP error status: ${response.status}`);
         }
 
         const data: MoviesResponseType = await response.json();
         setMovies(data.items);
         setTotalItems(data.total);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to fetch movies");
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Failed to fetch movies");
+        }
       } finally {
         setIsLoading(false);
       }
     };
-
     fetchMovies();
   }, [currentPage]);
 
