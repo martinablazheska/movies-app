@@ -5,8 +5,10 @@ import { MoviesProvider } from "@/context/MoviesContext";
 function App() {
   return (
     <MoviesProvider>
-      <Header />
-      <MoviesList />
+      <div className="h-screen flex flex-col overflow-hidden">
+        <Header />
+        <MoviesList />
+      </div>
     </MoviesProvider>
   );
 }
