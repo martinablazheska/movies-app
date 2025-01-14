@@ -39,7 +39,7 @@ const MoviesGrid = ({
     <div className="w-full mt-4 px-1 text-slate-500 text-sm">
       {totalItems} movies found
     </div>
-    <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3 py-4">
+    <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6 py-4 mb-12 md:mb-0">
       {movies.map(movie => (
         <MovieCard key={movie.id} title={movie.title} />
       ))}
