@@ -6,7 +6,7 @@ const Pagination = () => {
   const { currentPage, totalPages, setPage, hasNextPage, hasPreviousPage } =
     useMovies();
   return (
-    <div className="w-full flex justify-center items-center gap-3 py-2 shadow-lg bg-white sticky border-t border-t-slate-300 lg:shadow-none lg:border-none lg:bg-transparent lg:static lg:mt-auto">
+    <div className="w-screen flex justify-center items-center gap-3 py-2 shadow-lg bg-white fixed bottom-0 left-0 border-t border-t-slate-300 md:w-full md:shadow-none md:border-none md:bg-transparent md:static md:mt-auto">
       <button
         onClick={() => setPage(currentPage - 1)}
         disabled={!hasPreviousPage}
