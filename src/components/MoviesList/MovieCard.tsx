@@ -1,4 +1,6 @@
 import moviePlaceHolder from "@/assets/movie-placeholder.jpg";
+import MovieCardTitle from "@/components/MoviesList/MovieCardTitle";
+import MovieCardDescription from "./MovieCardDescription";
 
 const MovieCard: React.FC<{ title: string }> = ({ title }) => {
   return (
@@ -9,13 +11,12 @@ const MovieCard: React.FC<{ title: string }> = ({ title }) => {
         className="opacity-65 rounded-lg"
       />
       <div>
-        <h2 className="font-semibold text-slate-800 truncate whitespace-nowrap overflow-hidden">
-          {title}
-        </h2>
-        <p className="text-xs text-slate-700">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae
-          repellat voluptas ipsum ullam corporis debitis.
-        </p>
+        <MovieCardTitle title={title} />
+        <MovieCardDescription
+          description={
+            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae repellat voluptas ipsum ullam corporis debitis."
+          }
+        />
       </div>
     </div>
   );
