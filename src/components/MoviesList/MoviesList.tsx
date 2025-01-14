@@ -1,18 +1,30 @@
+import { useMovies } from "@/hooks/useMovies";
+import Loader from "@/components/UI/Loader";
 import MovieCard from "@/components/MoviesList/MovieCard";
-import { MovieType } from "@/utils/types";
+import MovieTape from "@/icons/MovieTape";
 
-const MoviesList: React.FC<{ movies: MovieType[] }> = ({ movies }) => {
+const MoviesList = () => {
+  const { movies, isLoading } = useMovies();
+
   return (
-    <div className="h-full w-full px-4 py-10">
-      {movies.length > 0 ? (
-        <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3 ">
-          {movies.map(movie => (
-            <MovieCard key={movie.id} title={movie.title} />
-          ))}
-        </div>
+    <div className="w-full flex flex-grow justify-center items-center px-4 py-10 overflow-y-auto">
+      {isLoading ? (
+        <Loader title="Loading movies..." />
       ) : (
-        // @TODO: Create a better screen for this scenario
-        <span className="text-slate-700">No movies to display...</span>
+        <>
+          {movies.length > 0 ? (
+            <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3 ">
+              {movies.map(movie => (
+                <MovieCard key={movie.id} title={movie.title} />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3 justify-center items-center">
+              <MovieTape className="text-violet-700" />
+              <span className="text-slate-700">No movies to display...</span>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
