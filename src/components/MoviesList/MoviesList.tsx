@@ -1,7 +1,8 @@
 import MovieCard from "@/components/MoviesList/MovieCard";
-import { MovieType } from "@/utils/types";
+import { useMovies } from "@/hooks/useMovies";
 
-const MoviesList: React.FC<{ movies: MovieType[] }> = ({ movies }) => {
+const MoviesList = () => {
+  const { movies } = useMovies();
   return (
     <div className="h-full w-full px-4 py-10">
       {movies.length > 0 ? (
