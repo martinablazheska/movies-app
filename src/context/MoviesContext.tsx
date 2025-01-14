@@ -41,13 +41,11 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
 
         if (response.status === 422) {
           const validationError = await response.json();
-          throw new Error(
-            `Validation error: ${validationError.detail[0]?.msg}`
-          );
+          throw new Error(`${validationError.detail[0]?.msg}`);
         }
 
         if (!response.ok) {
-          throw new Error(`HTTP error status: ${response.status}`);
+          throw new Error(`Something went wrong`);
         }
 
         const data: MoviesResponseType = await response.json();
