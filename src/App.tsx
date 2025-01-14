@@ -1,5 +1,6 @@
 import Header from "@/components/Header/Header";
 import MoviesList from "@/components/MoviesList/MoviesList";
+import { MoviesProvider } from "@/context/MoviesContext";
 
 const mockResponse = {
   total: 96,
@@ -49,10 +50,10 @@ const mockResponse = {
 
 function App() {
   return (
-    <div>
+    <MoviesProvider>
       <Header />
       <MoviesList movies={mockResponse.items} />
-    </div>
+    </MoviesProvider>
   );
 }
 
