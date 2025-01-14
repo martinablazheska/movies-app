@@ -53,8 +53,7 @@ const MoviesGrid = ({
 );
 
 const MoviesList = () => {
-  const { movies, isLoading, totalItems } = useMovies();
-  const error = "Something went wrong";
+  const { movies, isLoading, totalItems, error } = useMovies();
 
   if (isLoading) return <LoadingState />;
   if (error) return <ErrorState message={error} />;
