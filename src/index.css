@@ -7,6 +7,11 @@ body {
   font-family: "Poppins", serif;
 }
 
+body.dark {
+  background-color: #020617;
+  color: whitesmoke;
+}
+
 html,
 body {
   margin: 0;

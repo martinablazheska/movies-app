@@ -10,19 +10,19 @@ const Pagination = () => {
       <button
         onClick={() => setPage(currentPage - 1)}
         disabled={!hasPreviousPage}
-        className="w-5 h-5 text-violet-800 disabled:text-slate-400 text-3xl"
+        className="w-5 h-5 text-violet-800 dark:text-violet-500 disabled:text-slate-400 text-3xl"
       >
         <ChevronLeft />
       </button>
 
-      <span className=" text-slate-600">
+      <span className="text-slate-600 dark:text-slate-300 font-medium">
         {currentPage}/{totalPages}
       </span>
 
       <button
         onClick={() => setPage(currentPage + 1)}
         disabled={!hasNextPage}
-        className="w-5 h-5 text-violet-800 disabled:text-slate-400 text-3xl"
+        className="w-5 h-5 text-violet-800 dark:text-violet-500 disabled:text-slate-400 text-3xl"
       >
         <ChevronRight />
       </button>
