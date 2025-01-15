@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { MovieType, MoviesResponseType } from "@/utils/types";
+import { useUrlParams } from "@/hooks/useUrlParams";
 
 type MoviesContextType = {
   movies: MovieType[];
@@ -20,18 +21,49 @@ export const MoviesContext = createContext<MoviesContextType | undefined>(
 );
 
 export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
+  const { searchParams, updateUrl } = useUrlParams();
+
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(searchParams.page);
   const [totalItems, setTotalItems] = useState(0);
-  const [query, setQuery] = useState("");
+  const [query, setQueryState] = useState(searchParams.query);
 
   const LIMIT = 10;
   const totalPages = Math.ceil(totalItems / LIMIT);
   const hasNextPage = currentPage < totalPages;
   const hasPreviousPage = currentPage > 1;
 
+  const setQuery = (newQuery: string) => {
+    setQueryState(newQuery);
+    setCurrentPage(1);
+    updateUrl(1, newQuery);
+  };
+
+  const setPage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      updateUrl(page, query);
+    }
+  };
+
+  // Handle browser navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const page = Number(params.get("page")) || 1;
+      const searchQuery = params.get("query") || "";
+
+      setCurrentPage(page);
+      setQueryState(searchQuery);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Fetch movies when page or query changes
   useEffect(() => {
     const fetchMovies = async () => {
       setIsLoading(true);
@@ -66,12 +98,6 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
     };
     fetchMovies();
   }, [currentPage, query]);
-
-  const setPage = (page: number) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
 
   return (
     <MoviesContext.Provider
