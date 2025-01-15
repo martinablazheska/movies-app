@@ -1,5 +1,5 @@
 import moviePlaceHolder from "@/assets/movie-placeholder.jpg";
-import MovieCardTitle from "@/components/MoviesList/MovieCardTitle";
+import MovieCardTitle from "@/components/Main/MoviesGrid/MovieCardTitle";
 import MovieCardDescription from "./MovieCardDescription";
 import Play from "@/icons/Play";
 
