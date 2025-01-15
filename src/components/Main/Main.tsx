@@ -3,16 +3,14 @@ import Loader from "@/components/UI/Loader";
 import MoviesGrid from "@/components/Main/MoviesGrid/MoviesGrid";
 import MovieTape from "@/icons/MovieTape";
 
-const LoadingState = () => {
-  return (
-    <div className="w-full flex flex-grow justify-center px-4">
-      <Loader title="Loading movies..." />
-    </div>
-  );
-};
+const LoadingState = () => (
+  <div className="flex-grow flex justify-center items-center">
+    <Loader title="Loading movies..." />
+  </div>
+);
 
 const ErrorState = ({ message }: { message: string }) => (
-  <div className="w-full flex flex-col flex-grow justify-center items-center px-4">
+  <div className="flex-grow flex flex-col justify-center items-center">
     <MovieTape className="text-slate-400 dark:text-slate-800 w-40 h-40 mb-5" />
     <span className="text-violet-700 dark:text-violet-500">{message}</span>
     <span className="text-slate-600 dark:text-slate-300">
@@ -21,13 +19,21 @@ const ErrorState = ({ message }: { message: string }) => (
   </div>
 );
 
-const MoviesList = () => {
+const ResultsArea = () => {
   const { isLoading, error } = useMovies();
 
   if (isLoading) return <LoadingState />;
   if (error) return <ErrorState message={error} />;
+  return null;
+};
 
-  return <MoviesGrid />;
+const MoviesList = () => {
+  return (
+    <div className="w-full flex flex-col flex-grow px-4">
+      <MoviesGrid />
+      <ResultsArea />
+    </div>
+  );
 };
 
 export default MoviesList;
