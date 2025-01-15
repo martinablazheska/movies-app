@@ -2,6 +2,7 @@ import { useMovies } from "@/hooks/useMovies";
 import Pagination from "@/components/Main/MoviesGrid/Pagination";
 import MovieCard from "@/components/Main/MoviesGrid/MovieCard";
 import Search from "@/icons/Search";
+import Button from "@/components/UI/Button";
 
 const MoviesGrid = () => {
   const { movies, totalItems } = useMovies();
@@ -21,9 +22,7 @@ const MoviesGrid = () => {
               className="w-full py-2 pl-10 pr-4 rounded-lg border border-slate-200 focus:outline-none focus:border-slate-400 bg-white dark:border-slate-900 dark:focus:border-slate-600 dark:bg-slate-900"
             />
           </div>
-          <button className="font-semibold rounded-lg px-3 text-white bg-violet-600">
-            Search
-          </button>
+          <Button name="Search" onClick={() => {}} />
         </div>
       </div>
       <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6 py-4 mb-12 md:mb-0">
