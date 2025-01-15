@@ -1,4 +1,4 @@
-import Logo from "@/components/Header/Logo";
+import Logo from "@/components/Logo";
 import Moon from "@/icons/Moon";
 import Sun from "@/icons/Sun";
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Header from "@/components/Header/Header";
-import Main from "@/components/Main/Main";
+import Header from "@/components/Header";
+import Movies from "@/components/Movies";
 import { MoviesProvider } from "@/context/MoviesContext";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
     <MoviesProvider>
       <div className="h-screen flex flex-col">
         <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        <Main />
+        <Movies />
       </div>
     </MoviesProvider>
   );

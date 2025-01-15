@@ -1,6 +1,6 @@
 import { useMovies } from "@/hooks/useMovies";
-import Loader from "@/components/UI/Loader";
-import MoviesGrid from "@/components/Main/MoviesGrid/MoviesGrid";
+import Loader from "@/components/Loader";
+import MoviesGrid from "@/components/MoviesGrid";
 import MovieTape from "@/icons/MovieTape";
 
 const LoadingState = () => (
@@ -27,7 +27,7 @@ const ResultsArea = () => {
   return null;
 };
 
-const MoviesList = () => {
+const Movies = () => {
   return (
     <div className="w-full flex flex-col flex-grow px-4 scrollbar-stable overflow-y-auto">
       <MoviesGrid />
@@ -36,4 +36,4 @@ const MoviesList = () => {
   );
 };
 
-export default MoviesList;
+export default Movies;
