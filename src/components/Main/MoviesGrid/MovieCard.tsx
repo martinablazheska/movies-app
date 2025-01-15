@@ -1,11 +1,11 @@
 import moviePlaceHolder from "@/assets/movie-placeholder.jpg";
-import MovieCardTitle from "@/components/MoviesList/MovieCardTitle";
+import MovieCardTitle from "@/components/Main/MoviesGrid/MovieCardTitle";
 import MovieCardDescription from "./MovieCardDescription";
 import Play from "@/icons/Play";
 
 const MovieCard: React.FC<{ title: string }> = ({ title }) => {
   return (
-    <div className="w-full h-full display flex flex-col gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg shadow-md">
+    <div className="w-full h-full display flex flex-col gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-md">
       <button className="group relative w-full h-48">
         <img
           src={moviePlaceHolder}
