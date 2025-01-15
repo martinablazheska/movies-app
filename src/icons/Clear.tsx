@@ -15,7 +15,7 @@ const Clear: React.FC<{ className?: string }> = ({ className }) => {
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M3 3.32001L21 21.32"
