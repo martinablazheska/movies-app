@@ -9,7 +9,7 @@ const Header: React.FC<{
   return (
     <div className="w-full sticky top-0 bg-white dark:bg-slate-900 shadow-sm z-30">
       <div className="flex w-full max-w-screen-2xl justify-between items-center mx-auto px-6 py-4">
-        <a className="flex items-center gap-3" href="/">
+        <a className="flex items-center gap-3" href="/movies-app/">
           <Logo />
           <h1 className="font-semibold text-slate-800 dark:text-slate-50 text-xl">
             Movies Collection
