@@ -11,6 +11,8 @@ type MoviesContextType = {
   setPage: (page: number) => void;
   hasNextPage: boolean;
   hasPreviousPage: boolean;
+  query: string;
+  setQuery: (query: string) => void;
 };
 
 export const MoviesContext = createContext<MoviesContextType | undefined>(
@@ -23,6 +25,7 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
+  const [query, setQuery] = useState("");
 
   const LIMIT = 10;
   const totalPages = Math.ceil(totalItems / LIMIT);
@@ -36,7 +39,7 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
       try {
         const skip = (currentPage - 1) * LIMIT;
         const response = await fetch(
-          `https://november7-730026606190.europe-west1.run.app/movies/?skip=${skip}&limit=${LIMIT}`
+          `https://november7-730026606190.europe-west1.run.app/movies/?skip=${skip}&limit=${LIMIT}&query=${query}`
         );
 
         if (response.status === 422) {
@@ -62,7 +65,7 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
       }
     };
     fetchMovies();
-  }, [currentPage]);
+  }, [currentPage, query]);
 
   const setPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -83,6 +86,8 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
         setPage,
         hasNextPage,
         hasPreviousPage,
+        query,
+        setQuery,
       }}
     >
       {children}

@@ -21,21 +21,11 @@ const ErrorState = ({ message }: { message: string }) => (
   </div>
 );
 
-const EmptyState = () => (
-  <div className="w-full flex flex-col flex-grow justify-center items-center px-4">
-    <MovieTape className="text-slate-400  dark:text-slate-800 w-40 h-40 mb-5" />
-    <span className="text-slate-600 dark:text-slate-300">
-      No movies to display
-    </span>
-  </div>
-);
-
 const MoviesList = () => {
-  const { movies, isLoading, error } = useMovies();
+  const { isLoading, error } = useMovies();
 
   if (isLoading) return <LoadingState />;
   if (error) return <ErrorState message={error} />;
-  if (movies.length === 0) return <EmptyState />;
 
   return <MoviesGrid />;
 };
