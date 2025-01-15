@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMovies } from "@/hooks/useMovies";
-import Pagination from "@/components/Main/MoviesGrid/Pagination";
-import MovieCard from "@/components/Main/MoviesGrid/MovieCard";
+import Pagination from "@/components/Pagination";
+import MovieCard from "@/components/MovieCard";
 import Button from "@/components/Button";
 import Search from "@/icons/Search";
 import Clear from "@/icons/Clear";
