@@ -42,7 +42,7 @@ const MoviesGrid = () => {
             />
             <button
               onClick={handleClearSearch}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full p-1 hover:bg-slate-600 transition-all duration-300 ease-in-out"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full p-1 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all duration-300 ease-in-out"
             >
               <Clear />
             </button>
