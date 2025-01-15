@@ -70,7 +70,6 @@ export const MoviesProvider = ({ children }: { children: React.ReactNode }) => {
   const setPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 

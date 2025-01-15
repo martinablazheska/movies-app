@@ -4,11 +4,10 @@ import Pagination from "@/components/Main/MoviesGrid/Pagination";
 import MovieCard from "@/components/Main/MoviesGrid/MovieCard";
 import Button from "@/components/UI/Button";
 import Search from "@/icons/Search";
-import MovieTape from "@/icons/MovieTape";
 import Clear from "@/icons/Clear";
 
 const MoviesGrid = () => {
-  const { movies, totalItems, query, setQuery } = useMovies();
+  const { movies, totalItems, query, setQuery, isLoading } = useMovies();
   const [inputValue, setInputValue] = useState(query);
 
   function handleSearch() {
@@ -21,8 +20,8 @@ const MoviesGrid = () => {
   }
 
   return (
-    <div className="w-full flex flex-col flex-grow px-4">
-      <div className="w-full flex flex-col gap-3 md:flex-row md:justify-between md:items-center mt-4 px-1 text-slate-700 dark:text-slate-300 ">
+    <>
+      <div className="w-full flex flex-col gap-3 md:flex-row md:justify-between md:items-center mt-4 px-1 text-slate-700 dark:text-slate-300">
         <div className="text-sm">{totalItems} movies found</div>
         <div className="flex items-stretch gap-4">
           <div className="relative w-full max-w-xs">
@@ -51,24 +50,18 @@ const MoviesGrid = () => {
           <Button name="Search" onClick={handleSearch} />
         </div>
       </div>
-      {movies.length > 0 ? (
-        <>
+
+      {!isLoading && movies.length > 0 && (
+        <div className="flex-grow flex flex-col justify-between">
           <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6 py-4 mb-12 md:mb-0">
             {movies.map(movie => (
               <MovieCard key={movie.id} title={movie.title} />
             ))}
           </div>
           <Pagination />
-        </>
-      ) : (
-        <div className="w-full flex flex-col flex-grow justify-center items-center px-4">
-          <MovieTape className="text-slate-400  dark:text-slate-800 w-40 h-40 mb-5" />
-          <span className="text-slate-600 dark:text-slate-300">
-            No movies to display {query.length > 0 && `for "${query}"`}
-          </span>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
