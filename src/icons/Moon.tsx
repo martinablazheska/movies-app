@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
-const Moon:React.FC<{ className?: string }> = ({ className }) => {
+const Moon: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <svg
       viewBox="0 0 24 24"
