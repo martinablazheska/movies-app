@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
 const ChevronLeft: React.FC<{ className?: string }> = ({ className }) => {
   return (

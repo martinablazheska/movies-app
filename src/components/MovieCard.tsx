@@ -1,6 +1,6 @@
 import moviePlaceHolder from "@/assets/movie-placeholder.jpg";
-import MovieCardTitle from "@/components/Main/MoviesGrid/MovieCardTitle";
-import MovieCardDescription from "./MovieCardDescription";
+import MovieCardTitle from "@/components/MovieCardTitle";
+import MovieCardDescription from "@/components/MovieCardDescription";
 import Play from "@/icons/Play";
 
 const MovieCard: React.FC<{ title: string }> = ({ title }) => {

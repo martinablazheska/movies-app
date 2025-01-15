@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
 const MovieTape: React.FC<{ className?: string }> = ({ className }) => {
   return (
