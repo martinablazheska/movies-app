@@ -22,3 +22,9 @@ html,
 body {
   margin: 0;
 }
+
+* {
+  scrollbar-width: thin; /* Makes the scrollbar thin */
+  scrollbar-color: rgba(144, 144, 144, 0.5) transparent; /* Thumb color and track color */
+  scrollbar-arrow-color: transparent;
+}
