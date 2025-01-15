@@ -29,7 +29,7 @@ const ResultsArea = () => {
 
 const Movies = () => {
   return (
-    <div className="w-full flex flex-col flex-grow px-4 scrollbar-stable overflow-y-auto">
+    <div className="w-full max-w-screen-2xl mx-auto flex flex-col flex-grow px-4 scrollbar-stable overflow-y-auto">
       <MoviesGrid />
       <ResultsArea />
     </div>
